@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CourseList.css';
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     return (
@@ -9,8 +10,8 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
                     <th colSpan={2}>{textFirstCell}</th>
                 ) : (
                     <>
-                        <th>{textFirstCell}</th>
-                        <th>{textSecondCell}</th>
+                        <th className='al-left'>{textFirstCell}</th>
+                        <th className='al-left'>{textSecondCell}</th>
                     </>
                 )
             ) : (

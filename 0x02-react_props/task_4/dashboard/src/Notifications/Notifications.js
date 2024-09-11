@@ -18,25 +18,32 @@ export default function Notifications({ displayDrawer }) {
         console.log("Close button has been clicked");
     }
     return (
-        <>
-            <div className='menuItem'>
-                <p>Your notifications</p>
-            </div>
-            {displayDrawer && (
-                <div className='Notifications'>
-                    <p>Here is the list of notifications</p>
-                    <ul>
-                        <NotificationItem type="default" value="New course available" />
-                        <NotificationItem type="urgent" value="New resume available" />
-                        <NotificationItem type="urgent" html={getLatestNotification()} />
-                    </ul>
-                    <button style={closeBtnStyle} aria-label='Close' onClick={closeBtn}>
-                        <img src={close_button} alt='close button' />
-                    </button>
+        <React.Fragment>
+            {displayDrawer ? (
+                <div className='disp-draw-flex'>
+                    <div className='menuItem'>
+                        <p>Your notifications</p>
+                    </div>
+                    <div className='Notifications'>
+                        <p>Here is the list of notifications</p>
+                        <ul>
+                            <NotificationItem type="default" value="New course available" />
+                            <NotificationItem type="urgent" value="New resume available" />
+                            <NotificationItem type="urgent" html={getLatestNotification()} />
+                        </ul>
+                        <button style={closeBtnStyle} aria-label='Close' onClick={closeBtn}>
+                            <img src={close_button} alt='close button' />
+                        </button>
+                    </div>
+                </div>
+                
+            ) : (
+                <div className='menuItem disp-draw-flex'>
+                    <p>Your notifications</p>
                 </div>
             )}
             
-        </>
+        </React.Fragment>
         
     );
 }

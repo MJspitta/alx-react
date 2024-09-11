@@ -7,7 +7,7 @@ import CourseList from '../CourseList/CourseList';
 import './App.css';
 import PropTypes from 'prop-types';
 
-function App(isLoggedIn) {
+function App({ isLoggedIn }) {
 
   return (
     <React.Fragment>

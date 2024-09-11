@@ -22,3 +22,12 @@
 [data-notification-type="urgent"] {
     color: red;
 }
+
+.disp-draw-flex {
+    position: fixed;
+    right: 1.5%;
+}
+
+.menuItem {
+    text-align: right;
+}

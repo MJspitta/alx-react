@@ -1,0 +1,17 @@
+.course-list {
+    width: 90%;
+    border: 1px solid lightgray;
+    margin: 2rem auto;
+}
+
+tr th {
+    border-bottom: 2px solid lightgray;
+}
+
+.al-left {
+    text-align: left;
+}
+
+th, td {
+    padding: 8px 0;
+}

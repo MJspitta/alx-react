@@ -24,14 +24,12 @@ class App extends React.Component {
 
   render() {
 
-    const { isLoggedIn } = this.props;
-
     return (
       <React.Fragment>
-        <Notifications />
+        <Notifications listNotifications={this.listNotifications} />
         <div className="App">
           <Header />
-          {isLoggedIn ? <CourseList /> : <Login />}
+          {this.props.isLoggedIn ? <CourseList listCourses={this.listCourses} /> : <Login />}
           <Footer />
         </div>
       </React.Fragment>

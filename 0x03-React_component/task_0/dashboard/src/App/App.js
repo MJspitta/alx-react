@@ -23,8 +23,9 @@ const listNotifications = [
 
 class App extends React.Component {
   render() {
-    const { isLoggedIn } = this.props;
     
+    const { isLoggedIn } = this.props;
+
     return (
       <React.Fragment>
         <Notifications />

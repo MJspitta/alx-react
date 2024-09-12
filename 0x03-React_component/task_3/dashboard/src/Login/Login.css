@@ -1,0 +1,17 @@
+.App-body {
+    padding: 40px;
+  }
+  .App-body p {
+    margin-bottom: 10px;
+  }
+  .email-pass {
+    display: flex;
+    gap: 10px;
+  }
+  .email-pass button {
+    padding: 0 8px;
+    background-color: white;
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  

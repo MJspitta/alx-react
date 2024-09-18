@@ -1,0 +1,27 @@
+.Notifications button img {
+    width: 20px;
+    height: 20px;
+}
+
+.Notifications ul {
+    margin: 20px 32px;
+}
+.Notifications ul li {
+    margin-bottom: 4px;
+}
+
+[data-notification-type="default"] {
+    color: blue;
+}
+[data-notification-type="urgent"] {
+    color: red;
+}
+
+.disp-draw-flex {
+    position: fixed;
+    right: 1.5%;
+}
+
+.menuItem {
+    text-align: right;
+}

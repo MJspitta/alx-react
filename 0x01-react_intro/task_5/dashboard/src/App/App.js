@@ -1,7 +1,7 @@
 import { getFullYear, getFooterCopy } from '../utils/utils';
 import Notifications from '../Notifications/Notifications';
 import './App.css';
-import holberton_logo from './holberton-logo.jpg';
+import holberton_logo from '../assets/holberton-logo.jpg';
 
 function App() {
   const isIndex = false;

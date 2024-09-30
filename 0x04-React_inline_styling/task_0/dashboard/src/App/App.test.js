@@ -16,7 +16,7 @@ describe("App tests", () => {
   it("should render Notifications component", () => {
     const component = shallow(<App />);
 
-    expect(component.containsMatchingElement(<Notifications />)).toEqual(false);
+    expect(component.containsMatchingElement(<Notifications />)).toEqual(true);
   });
   it("should render Header component", () => {
     const component = shallow(<App />);
@@ -36,27 +36,31 @@ describe("App tests", () => {
   it("does not render courselist if logged out", () => {
     const component = shallow(<App />);
 
-    component.setProps({ isLogedIn: false });
+    component.setProps({ isLoggedIn: false });
 
     expect(component.contains(<CourseList />)).toBe(false);
   });
   it("renders courselist if logged in", () => {
     const component = shallow(<App isLoggedIn={true} />);
 
-    expect(component.containsMatchingElement(<CourseList />)).toEqual(false);
+    expect(component.containsMatchingElement(<CourseList />)).toEqual(true);
     expect(component.contains(<Login />)).toBe(false);
   });
 });
 
 describe("When ctrl + h is pressed", () => {
+  beforeAll(() => {
+    global.alert = jest.fn();
+  });
+  
   it("calls logOut function", () => {
     const mocked = jest.fn();
-    const wrapper = mount(<App logOut={mocked} />);
+    const wrapper = shallow(<App logOut={mocked} />);
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
     document.dispatchEvent(event);
 
-    expect(mocked).toHaveBeenCalledTimes(1);
-    wrapper.unmount();
+    expect(global.alert).toHaveBeenCalledWith('Logging you out');
+    expect(mocked).toHaveBeenCalled();
   });
 
   document.alert = jest.fn();

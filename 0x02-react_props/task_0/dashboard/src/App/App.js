@@ -7,7 +7,6 @@ import Header from '../Header/Header';
 import './App.css';
 
 function App() {
-  const isIndex = false;
 
   return (
     <React.Fragment>

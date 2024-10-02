@@ -1,8 +1,8 @@
 import React from 'react';
 import { getLatestNotification } from '../utils/utils';
-import NotificationItem from './NotificationItem';
 import './Notifications.css';
 import close_button from '../assets/close-icon.png';
+import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 
 
@@ -20,7 +20,7 @@ export default function Notifications({ displayDrawer }) {
     return (
         <React.Fragment>
             {displayDrawer ? (
-                <div className='disp-draw-flex'>
+                <div className='flex-menu'>
                     <div className='menuItem'>
                         <p>Your notifications</p>
                     </div>
@@ -36,22 +36,23 @@ export default function Notifications({ displayDrawer }) {
                         </button>
                     </div>
                 </div>
-                
             ) : (
-                <div className='menuItem disp-draw-flex'>
-                    <p>Your notifications</p>
+                <div className='flex-menu'>
+                    <div className='menuItem'>
+                        <p>Your notifications</p>
+                    </div>
                 </div>
             )}
-            
+
         </React.Fragment>
         
     );
 }
 
 Notifications.propTypes = {
-    displayDrawer: PropTypes.bool,
+    displayDrawer: PropTypes.bool
 };
 
 Notifications.defaultProps = {
-    displayDrawer: false,
-}
+    displayDrawer: false
+};

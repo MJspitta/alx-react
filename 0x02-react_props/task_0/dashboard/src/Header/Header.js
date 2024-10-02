@@ -1,3 +1,4 @@
+import React from 'react';
 import holberton_logo from '../assets/holberton-logo.jpg';
 import './Header.css';
 

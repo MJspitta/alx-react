@@ -31,13 +31,10 @@ const styles = StyleSheet.create({
     },
     okButton: {
         padding: "0 8px",
-        backgroundColor: "#ffffff",
-        borderColor: "#ffffff",
+        backgroundColor: "white",
+        borderColor: "white",
         boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-    },
-    input: {
-        margin: "10px",
-    },
-});
+    }
+})
 
 export default Login;

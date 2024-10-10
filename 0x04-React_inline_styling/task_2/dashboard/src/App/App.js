@@ -1,21 +1,21 @@
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
+import PropTypes from 'prop-types';
 import CourseList from '../CourseList/CourseList';
+import { getLatestNotification } from '../utils/utils';
 import BodySection from '../BodySection/BodySection';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
-import PropTypes from 'prop-types';
-import { getLatestNotification } from '../utils/utils';
-
+import { StyleSheet, css } from 'aphrodite';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   listCourses = [
@@ -23,30 +23,27 @@ class App extends React.Component {
     { id: 2, name: 'Webpack', credit: 20 },
     { id: 3, name: 'React', credit: 40 },
   ];
-  
+
   listNotifications = [
-    { id: 1, type: 'default', value: 'New course available' },
-    { id: 2, type: 'urgent', value: 'New resume available' },
-    { id: 3, type: 'urgent', html: getLatestNotification() },
+    { id: 1, type: "default", value: "New course available" },
+    { id: 2, type: "urgent", value: "New resume available" },
+    { id: 3, type: "urgent", html: getLatestNotification() },
   ];
 
-  handleKeyDown(e) {
-    if (e.ctrlKey && e.key === 'h') {
-      alert('Logging you out');
+  handleKeyPress(e) {
+    if (e.ctrlKey && e.key === "h") {
+      alert("Logging you out");
       this.props.logOut();
     }
   }
-
   componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
+    document.addEventListener("keydown", this.handleKeyPress);
   }
-
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener("keydown", this.handleKeyPress);
   }
 
   render() {
-
     return (
       <React.Fragment>
         <Notifications listNotifications={this.listNotifications} />
@@ -75,18 +72,20 @@ const styles = StyleSheet.create({
   App: {
     width: "97%",
     margin: "0 auto",
-    fontFamily: "sans-serif",
+    fontFamily: "Arial, Helvetica, sans-serif",
   },
 });
-
-App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => {},
-};
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
   logOut: PropTypes.func,
+};
+
+App.defaultProps = {
+  isLoggedIn: false,
+  logOut: () => {
+    return;
+  },
 };
 
 export default App;

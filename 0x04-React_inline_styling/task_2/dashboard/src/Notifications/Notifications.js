@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notifications.css';
 import close_button from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
@@ -37,7 +36,7 @@ class Notifications extends React.Component {
         return (
             <React.Fragment>
                 <div className='flex-menu'>
-                    <div className='menuItem'>
+                    <div className={css(styles.menuItem)}>
                         <p>Your notifications</p>
                     </div>
                     {this.props.displayDrawer && (
@@ -76,7 +75,12 @@ const styles = StyleSheet.create({
     },
     ul: {
         margin: "20px 32px",
-    }
+    },
+    menuItem: {
+        textAlign: "right",
+        paddingTop: "1rem",
+        paddingRight: "1.5%",
+    },
 })
 
 

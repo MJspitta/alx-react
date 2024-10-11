@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
-  const styleRow = isHeader ? { backgroundColor: '#deb5b545' } : { backgroundColor: '#f5f5f5ab' };
+  // const styleRow = isHeader ? { backgroundColor: '#deb5b545' } : { backgroundColor: '#f5f5f5ab' };
 
   return (
-    <tr style={styleRow}>
+    <tr className={isHeader ? css(styles.header) : css(styles.normal)}>
       {isHeader ? (
         textSecondCell === null ? (
           <th colSpan="2">{textFirstCell}</th>
@@ -25,6 +26,15 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     </tr>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: "#deb5b545",
+  },
+  normal: {
+    backgroundColor: "#f5f5f5ab",
+  },
+});
 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,

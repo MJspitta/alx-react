@@ -1,6 +1,5 @@
 import React from "react";
 import CourseListRow from "./CourseListRow";
-import "./CourseList.css";
 import PropTypes from "prop-types";
 import CourseShape from "./CourseShape";
 import { StyleSheet, css } from "aphrodite";
@@ -29,6 +28,18 @@ const styles = StyleSheet.create({
     width: "100%",
     border: "1px solid #ddd",
     fontSize: "1.2rem",
+  },
+  th: {
+    borderBottom: "1px solid #ddd",
+    width: "70%",
+  },
+  td: {
+    width: "70%",
+  },
+  tr: {
+    ":nth-child(2)": {
+      textAlign: "left",
+    },
   },
 });
 

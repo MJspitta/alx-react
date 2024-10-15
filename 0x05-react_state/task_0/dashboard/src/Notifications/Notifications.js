@@ -39,7 +39,7 @@ class Notifications extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div className='flex-menu'>
+                <div>
                     {!this.props.displayDrawer && (
                         <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
                             <p>Your notifications</p>

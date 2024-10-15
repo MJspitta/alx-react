@@ -13,9 +13,9 @@ const closeBtnStyle = {
     background: 'none',
 };
 
-// function closeBtn() {
-//     console.log("Close button has been clicked");
-// }
+function closeBtn() {
+    console.log("Close button has been clicked");
+}
 
 class Notifications extends React.Component {
     constructor(props) {
@@ -25,7 +25,11 @@ class Notifications extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return nextProps.length > this.props.listNotifications.length;
+        // return nextProps.length > this.props.listNotifications.length;
+        return (
+            nextProps.displayDrawer !== this.props.displayDrawer ||
+            nextProps.listNotifications.length > this.props.listNotifications.length
+        );
     }
 
     markAsRead(id) {
@@ -55,14 +59,7 @@ class Notifications extends React.Component {
                                     <NotificationItem type="default" value="No new notification for now" />
                                 </ul>
                             )}
-                            <button
-                                style={closeBtnStyle}
-                                aria-label='Close'
-                                onClick={(e) => {
-                                    console.log("Close button has been clicked");
-                                    this.props.handleHideDrawer();
-                                }}
-                            >
+                            <button style={closeBtnStyle} aria-label='Close' onClick={this.props.handleHideDrawer}>
                                 <img src={close_button} alt='close button' width='20px' />
                             </button>
                         </div>
@@ -128,16 +125,16 @@ const styles = StyleSheet.create({
 
 Notifications.propTypes = {
     displayDrawer: PropTypes.bool,
-    listNotifications: PropTypes.arrayOf(NotificationItemShape),
     handleDisplayDrawer: PropTypes.func,
     handleHideDrawer: PropTypes.func,
+    listNotifications: PropTypes.arrayOf(NotificationItemShape)
 };
 
 Notifications.defaultProps = {
     displayDrawer: false,
-    listNotifications: [],
     handleDisplayDrawer: () => {},
     handleHideDrawer: () => {},
+    listNotifications: []
 };
 
 export default Notifications;

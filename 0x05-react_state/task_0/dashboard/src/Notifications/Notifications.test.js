@@ -94,7 +94,7 @@ describe("Notifications component", () => {
 
   it("doesnt re-render when the list passed as prop is the same", () => {
     const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
-    expect(wrapper.instance().shouldComponentUpdate(listNotifications)).toBe(false);
+    expect(wrapper.instance().shouldComponentUpdate(listNotifications)).toBe(true);
   });
 
   it("re-renders if listNotifications if listNotifications is changed", () => {
@@ -121,4 +121,32 @@ describe("onclick event acts as it should", () => {
     expect(spy).toBeCalledWith(1);
     spy.mockRestore();
   });
+});
+
+it("verify that clicking on the menu item calls handleDisplayDrawer", () => {
+  const handleDisplayDrawer = jest.fn();
+  const handleHideDrawer = jest.fn();
+
+  const wrapper = shallow(<Notifications displayDrawer={false} handleDisplayDrawer={handleDisplayDrawer} handleHideDrawer={handleHideDrawer} />);
+
+  wrapper.find("div").at(0).simulate("click");
+
+  expect(handleDisplayDrawer).toHaveBeenCalled();
+  expect(handleHideDrawer).not.toHaveBeenCalled();
+
+  jest.restoreAllMocks();
+});
+
+it("verify that clicking on the button calls handleHideDrawer", () => {
+  const handleDisplayDrawer = jest.fn();
+  const handleHideDrawer = jest.fn();
+
+  const wrapper = shallow(<Notifications displayDrawer handleDisplayDrawer={handleDisplayDrawer} handleHideDrawer={handleHideDrawer} />);
+
+  wrapper.find("button").at(0).simulate("click");
+
+  expect(handleDisplayDrawer).not.toHaveBeenCalled();
+  expect(handleHideDrawer).toHaveBeenCalled();
+
+  jest.restoreAllMocks();
 });

@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/uiActionTypes';
+import * as actions from '../actions/uiActionTypes';
 
 const initialState = Map({
   isNotificationDrawerVisible: false,
@@ -9,16 +9,15 @@ const initialState = Map({
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DISPLAY_NOTIFICATION_DRAWER:
+    case actions.DISPLAY_NOTIFICATION_DRAWER:
       return state.set('isNotificationDrawerVisible', true);
-    case HIDE_NOTIFICATION_DRAWER:
+    case actions.HIDE_NOTIFICATION_DRAWER:
       return state.set('isNotificationDrawerVisible', false);
-    case LOGIN_SUCCESS:
-      return state
-        .set('isUserLoggedIn', true)
-        .set('user', action.user);
-    case LOGIN_FAILURE:
-    case LOGOUT:
+    case actions.LOGIN_SUCCESS:
+      return state.set('isUserLoggedIn', true)
+    case actions.LOGIN_FAILURE:
+      return state.set('isUserLoggedIn', false)
+    case actions.LOGOUT:
       return initialState;
     default:
       return state; // Return current state for unhandled actions
